@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Conditional Statements Practice</title>
+  <style>
+    body { font-family: Arial; padding: 20px; background-color: #f5f5f5; }
+    .box { margin-bottom: 20px; padding: 15px; background: #fff; border-radius: 10px; box-shadow: 0 0 10px #ccc; }
+    label, select, input { display: block; margin-top: 10px; }
+    button { margin-top: 10px; padding: 5px 15px; border: none; background: #007BFF; color: white; border-radius: 5px; cursor: pointer; }
+    button:hover { background: #0056b3; }
+    .output { margin-top: 10px; font-weight: bold; color: #333; }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h2>1. Simple if statement (Check Positive Number)</h2>
+    <input type="number" id="num1" placeholder="Enter a number">
+    <button onclick="checkPositive()">Check</button>
+    <div class="output" id="out1"></div>
+  </div>
+
+  <div class="box">
+    <h2>2. if-else block (Check Even or Odd)</h2>
+    <input type="number" id="num2" placeholder="Enter a number">
+    <button onclick="checkEvenOdd()">Check</button>
+    <div class="output" id="out2"></div>
+  </div>
+
+  <div class="box">
+    <h2>3. else-if ladder (Grade Checker)</h2>
+    <input type="number" id="marks" placeholder="Enter marks (0–100)">
+    <button onclick="checkGrade()">Check Grade</button>
+    <div class="output" id="out3"></div>
+  </div>
+
+  <div class="box">
+    <h2>4. switch statement (Select Day of the Week)</h2>
+    <select id="daySelect">
+      <option value="">-- Choose a number (1-7) --</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+    </select>
+    <button onclick="getDay()">Get Day Name</button>
+    <div class="output" id="out4"></div>
+  </div>
+
+  <script>
+    // 1. Simple if statement
+    function checkPositive() {
+      const num = parseFloat(document.getElementById("num1").value);
+      if (num > 0) {
+        document.getElementById("out1").innerText = "It's a positive number.";
+      }
+    }
+
+    // 2. if-else block
+    function checkEvenOdd() {
+      const num = parseInt(document.getElementById("num2").value);
+      if (num % 2 === 0) {
+        document.getElementById("out2").innerText = "It's an Even number.";
+      } else {
+        document.getElementById("out2").innerText = "It's an Odd number.";
+      }
+    }
+
+    // 3. else-if ladder
+    function checkGrade() {
+      const marks = parseFloat(document.getElementById("marks").value);
+      let result = "";
+
+      if (marks < 0 || marks > 100) {
+        result = "Invalid marks! Please enter between 0 to 100.";
+      } else if (marks >= 90) {
+        result = "Grade: A+";
+      } else if (marks >= 75) {
+        result = "Grade: A";
+      } else if (marks >= 60) {
+        result = "Grade: B";
+      } else if (marks >= 40) {
+        result = "Grade: C";
+      } else {
+        result = "Grade: F (Fail)";
+      }
+
+      document.getElementById("out3").innerText = result;
+    }
+
+    // 4. switch statement
+    function getDay() {
+      const dayNum = document.getElementById("daySelect").value;
+      let dayName = "";
+
+      switch (dayNum) {
+        case "1": dayName = "Sunday"; break;
+        case "2": dayName = "Monday"; break;
+        case "3": dayName = "Tuesday"; break;
+        case "4": dayName = "Wednesday"; break;
+        case "5": dayName = "Thursday"; break;
+        case "6": dayName = "Friday"; break;
+        case "7": dayName = "Saturday"; break;
+        default: dayName = "Please select a valid number (1-7).";
+      }
+
+      document.getElementById("out4").innerText = "Day: " + dayName;
+    }
+  </script>
+
+</body>
+</html>
